@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript">		
+
+		//没有块级作用域，但是有函数作用域
+		function m1() {
+
+			for (var i = 1;i <= 10;i ++) {
+				var j = i +10;
+				console.log('i=' + i + ',j=' + j);	
+
+				!function(){
+					var k = i + j;
+					console.log('k=' + k);
+				}();
+				
+				//报错，函数作用域,未声明
+				//console.log("k的值为：" + k)
+			}
+
+			//i,j在这里是可以使用的
+			console.log('i最终值=' + i + ',j=' + j);
+		}
+		
+		m1();
+		
+		//报错，函数作用域,未声明
+		//console.log("函数外部：" + i + "," + j);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
